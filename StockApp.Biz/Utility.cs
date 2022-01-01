@@ -10,13 +10,15 @@ namespace StockApp.Biz
     {
         public bool IsTaiwanStockWorkingDay(DateTime now)
         {
+            if(!now.IsWorkingday()) return false;
+
             TimeSpan beginWorkingHour = TimeSpan.FromHours(9);
             TimeSpan endWorkingHour = TimeSpan.FromHours(13.5);
 
             DateTime beginTime = now.Date.Add(beginWorkingHour);
             DateTime endTime = now.Date.Add(endWorkingHour);
 
-            return now.IsWorkingday() && now.Between(beginTime,endTime);                            
+            return now.Between(beginTime,endTime);                            
         }
     }
 
