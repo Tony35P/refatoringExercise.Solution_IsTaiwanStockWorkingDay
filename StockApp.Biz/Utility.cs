@@ -12,11 +12,11 @@ namespace StockApp.Biz
         {
             if(!now.IsWorkingday()) return false;
 
-            TimeSpan beginWorkingHour = TimeSpan.FromHours(9);
-            TimeSpan endWorkingHour = TimeSpan.FromHours(13.5);
+            //TimeSpan beginWorkingHour = TimeSpan.FromHours(9);
+            //TimeSpan endWorkingHour = TimeSpan.FromHours(13.5);
 
-            DateTime beginTime = now.Date.Add(beginWorkingHour);
-            DateTime endTime = now.Date.Add(endWorkingHour);
+            DateTime beginTime = now.Date.Add(9.Hours());
+            DateTime endTime = now.Date.Add(13.Hours()+30.Minutse());
 
             return now.Between(beginTime,endTime);                            
         }
@@ -32,6 +32,10 @@ namespace StockApp.Biz
     
     public static class IntExts
     {
+        public static TimeSpan Hours(this int source)=> TimeSpan.FromHours(source);
+
+        public static TimeSpan Minutse(this int source) => TimeSpan.FromMinutes(source);
+
         public static bool Between(this int source, int minValue, int maxValue)
             => source >= minValue && source <= maxValue;
     }
