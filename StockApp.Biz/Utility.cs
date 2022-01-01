@@ -12,13 +12,7 @@ namespace StockApp.Biz
         {
             if(!now.IsWorkingday()) return false;
 
-            //TimeSpan beginWorkingHour = TimeSpan.FromHours(9);
-            //TimeSpan endWorkingHour = TimeSpan.FromHours(13.5);
-
-            DateTime beginTime = now.Date.Add(9.Hours());
-            DateTime endTime = now.Date.Add(13.Hours()+30.Minutse());
-
-            return now.Between(beginTime,endTime);                            
+            return now.Between(now.Date.Add(9.Hours()), now.Date.Add(13.Hours() + 30.Minutse()));                            
         }
     }
 
