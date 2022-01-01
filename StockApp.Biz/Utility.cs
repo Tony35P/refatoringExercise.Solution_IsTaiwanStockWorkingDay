@@ -21,10 +21,16 @@ namespace StockApp.Biz
 
 
             int weekday = int.Parse(today.DayOfWeek.ToString("d"));
-            if ((weekday >= beginWorkingDay && weekday <= endWorkingDay) && (today.CompareTo(beginTime) >= 0 && today.CompareTo(endTime) <= 0))
+            if (weekday.Between(beginWorkingDay,endWorkingDay) && (today.CompareTo(beginTime) >= 0 && today.CompareTo(endTime) <= 0))
                 return true;
             return false;
 
         }
+    }
+
+    public static class IntExts
+    {
+        public static bool Between(this int source, int minValue, int maxValue)
+            => source >= minValue && source <= maxValue;
     }
 }
