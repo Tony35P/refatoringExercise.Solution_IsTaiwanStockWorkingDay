@@ -8,28 +8,22 @@ namespace StockApp.Biz
 {
     public class Utility
     {
-        public bool IsTaiwanStockWorkingDay(DateTime today)
+        public bool IsTaiwanStockWorkingDay(DateTime now)
         {
-            const int beginWorkingDay = 1, endWorkingDay = 5;
             TimeSpan beginWorkingHour = TimeSpan.FromHours(9);
             TimeSpan endWorkingHour = TimeSpan.FromHours(13.5);
 
-            //DateTime start = new DateTime(today.Year, today.Month, today.Day, 9, 0, 0, 0);
-            //DateTime end = new DateTime(today.Year, today.Month, today.Day, 13, 30, 0, 0);
-            DateTime beginTime = today.Date.Add(beginWorkingHour);
-            DateTime endTime = today.Date.Add(endWorkingHour);
+            DateTime beginTime = now.Date.Add(beginWorkingHour);
+            DateTime endTime = now.Date.Add(endWorkingHour);
 
-
-            int weekday = (int)today.DayOfWeek;
-            if (weekday.Between(beginWorkingDay,endWorkingDay) && today.Between(beginTime,endTime))
-                return true;
-            return false;
-
+            return now.IsWorkingday() && now.Between(beginTime,endTime);                            
         }
     }
 
     public static class DateTimeExts
     {
+        public static bool IsWorkingday(this DateTime source)
+            => ((int)source.DayOfWeek).Between(1, 5);
         public static bool Between(this DateTime source, DateTime minValue, DateTime maxValue)
             => source>=minValue && source<=maxValue;
     }
