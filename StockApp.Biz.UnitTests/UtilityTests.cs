@@ -30,6 +30,10 @@ namespace StockApp.Biz.UnitTests
 
         [TestCase("2022/1/3 9:00:01")]
         [TestCase("2022/1/3 13:29:59")]
+        [TestCase("2022/1/4 9:00:01")]
+        [TestCase("2022/1/5 9:00:01")]
+        [TestCase("2022/1/6 9:00:01")]
+        [TestCase("2022/1/7 9:00:01")]
         public void IsTaiwanStockWorkingDay_星期一至五營業時間傳回true(string dt)
         {
             DateTime today = Convert.ToDateTime(dt);
