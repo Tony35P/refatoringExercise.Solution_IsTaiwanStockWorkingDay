@@ -20,7 +20,7 @@ namespace StockApp.Biz
             DateTime endTime = today.Date.Add(endWorkingHour);
 
 
-            int weekday = int.Parse(today.DayOfWeek.ToString("d"));
+            int weekday = (int)today.DayOfWeek;
             if (weekday.Between(beginWorkingDay,endWorkingDay) && (today.CompareTo(beginTime) >= 0 && today.CompareTo(endTime) <= 0))
                 return true;
             return false;
