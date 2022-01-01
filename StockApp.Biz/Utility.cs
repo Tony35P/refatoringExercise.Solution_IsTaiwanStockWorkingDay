@@ -8,7 +8,7 @@ namespace StockApp.Biz
 {
     public class Utility
     {
-        private bool IsTaiwanStockWorkingDay(DateTime today)
+        protected bool IsTaiwanStockWorkingDay(DateTime today)
         {
             DateTime start = new DateTime(today.Year, today.Month, today.Day, 9, 0, 0, 0);
             DateTime end = new DateTime(today.Year, today.Month, today.Day, 13, 30, 0, 0);
@@ -20,4 +20,3 @@ namespace StockApp.Biz
         }
     }
 }
-重構練習 判斷是否為股票營業時間程式1. 為既有程式碼撰寫單元測試, 確保目前程式正確, 稍後
